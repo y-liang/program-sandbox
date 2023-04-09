@@ -1,0 +1,20 @@
+<div id="readability">
+   <div id="title"> Reading Level </div>
+   <div id="note">
+      <textarea #inputText (keyup)="autoGrow()" placeholder="enter your reading material here..."></textarea>
+   </div>
+   <div id="buttons">
+      <button (click)="getGrade(inputText?.value)" [disabled]="!inputText?.value"> compute </button>
+      <button (click)="inputText.value=''; autoGrow()"> clear </button>
+   </div>
+   <div id="grade">
+      <h2>Reading Level:</h2>
+      <span>{{gradeLevel}}</span>
+   </div>
+   <div id="description">
+      <details>
+         <summary>How it works?</summary>
+         <p> It utilizes the Coleman-Liau index to analyze reading material and determine the approximate grade level required for comprehension. </p>
+      </details>
+   </div>
+</div>

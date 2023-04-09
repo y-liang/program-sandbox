@@ -1,0 +1,61 @@
+@import "../../app.component.scss";
+
+#color-bar {
+   padding: $padding-page;
+   max-width: $page-max-width;
+   margin: 30px auto;
+   padding: 45px 30px;
+   height: calc(100vh - 189px);
+
+
+   .set {
+      display: flex;
+      margin: 36px;
+      justify-content: center;
+
+      .card {
+         display: block;
+         width: 120px;
+         height: 150px;
+         border-radius: 12px;
+         margin: 0 12px;
+
+         // border: 1px solid blueviolet;
+
+         &#blurple {
+            background-color: $color-primary;
+         }
+         &#darker {
+            background-color: $color-darker;
+         }
+         &#dark {
+            background-color: $color-dark;
+         }
+         &#medium {
+            background-color: $color-medium;
+         }
+         &#light {
+            background-color: $color-light;
+         }
+         &#lighter {
+            background-color: $color-lighter;
+         }
+
+         &#yellower {
+            background-color: $color-yellower;
+         }
+         &#yellow {
+            background-color: $color-yellow;
+         }
+         &#green {
+            background-color: $color-green;
+         }
+         &#greener {
+            background-color: $color-greener;
+         }
+         &#pink {
+            background-color: $color-pink;
+         }
+      }
+   }
+}

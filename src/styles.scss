@@ -1,0 +1,13 @@
+$page-max-width: 1260px;
+$page-min-width: 330px;
+$page-min-height: 540px;
+
+
+
+html,
+body {
+   min-width:$page-min-width;
+   min-height:$page-min-height;
+   margin: 0;
+   scroll-behavior: smooth;
+}

@@ -1,0 +1,20 @@
+@import "../../app.component.scss";
+
+#bottom-bar {
+   text-align: center;
+   background-color: $color-lighter;
+   padding: 12px 0;
+   position: absolute;
+   width: 100%;
+   min-width: $page-min-width;
+
+   p {
+      color: $color-dark;
+      font-family: $font-title;
+      font-weight: 300;
+      font-size: 15px;
+      margin: 0;
+
+      cursor: default;
+   }
+}

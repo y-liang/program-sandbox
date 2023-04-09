@@ -1,0 +1,25 @@
+<div id="overview">
+   <div [id]="mode" class="container">
+      <div class="stars">
+         <div class="small"></div>
+         <div class="medium"></div>
+         <div class="big"></div>
+      </div>
+      <div id="switch">
+         <div id="toggle" [class]="mode" (click)="toggleMode()"></div>
+      </div>
+      <div id="board">
+         <div class="card" [id]="'card-' + project.id" *ngFor="let project of projects">
+            <div class="project">
+               <a routerLink="/projects/{{project.name}}"></a>
+               <span class="project-name">{{project.name.split("-").join(" ")}}</span>
+               <div class="project-description">{{project.description}}</div>
+            </div>
+         </div>
+         <!-- <div id="card-z">
+            <span>hi there, welcome!</span>
+         </div> -->
+      </div>
+   </div>
+   <!-- <app-fragment></app-fragment> -->
+</div>

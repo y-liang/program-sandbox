@@ -1,0 +1,66 @@
+<div id="substitution">
+   <div id="title"> substitution cipher </div>
+   <form id="form-wrapper" [formGroup]="mainForm" (ngSubmit)="computeNow(keyFC?.value, inputTextFC?.value)" #f="ngForm">
+      <div id="form-selections">
+         <div class="selection">
+            <label for="sub-type">key type</label>
+            <div class="radio" *ngFor="let type of substitutionTypes">
+               <input type="radio" formControlName="subTypeFC" [value]="type">
+               {{type}}
+            </div>
+            <!-- <select formControlName="subTypeFC" id="sub-type" class="form-control">
+               <option *ngFor="let type of substitutionTypes" [value]="type">{{type}}</option>
+            </select> -->
+         </div>
+         <div class="selection">
+            <label for="tra-type">substitution type</label>
+            <div class="radio" *ngFor="let type of translationTypes">
+               <input type="radio" formControlName="traTypeFC" [value]="type">
+               {{type}}
+            </div>
+            <!-- <select formControlName="traTypeFC" id="tra-type" class="form-control">
+               <option *ngFor="let type of translationTypes" [value]="type">{{type}}</option>
+            </select> -->
+         </div>
+      </div>
+      <div id="form-buttons">
+         <button type="reset" (click)="resetOutput()">reset</button>
+         <button type="submit" [disabled]="mainForm?.invalid">{{traTypeFC?.value}}</button>
+      </div>
+      <div id="form-inputs">
+         <div class="form-input">
+            <input formControlName="keyFC" type="text" required>
+            <span></span>
+            <label>enter a {{subTypeFC?.value}} key</label>
+            <div *ngIf="subTypeFC?.value == substitutionTypes[1] && traTypeFC?.value == translationTypes[0]">
+               <button (click)="generateKey()" id="gen-key">generate a key</button>
+            </div>
+            <!-- <div *ngIf="mainForm?.invalid && f.submitted" class="alert">
+               <div *ngIf="mainForm.errors?.invalidNumKey">
+                  Invalid key. Your key has to be numeric.
+               </div>
+               <div *ngIf="mainForm.errors?.invalidAlphKey" class="alert">
+                  Invalid key. Your key has to be alphabetical and unique 26 charaters.
+               </div>
+            </div> -->
+         </div>
+         <div class="form-input">
+            <textarea formControlName="inputTextFC" id="a-text" class="form-control" required></textarea>
+            <span></span>
+            <label>enter here a text to {{traTypeFC?.value}}</label>
+         </div>
+      </div>
+      <!-- <div>You can now use a {{subTypeFC?.value}} key: {{keyFC?.value}} <br> <br>
+         to {{traTypeFC?.value}} your text: {{inputTextFC?.value}}</div> -->
+      <div id="output" *ngIf="outputText">
+         <label>{{traTypeFC?.value}}ed text </label>
+         <div>{{outputText}}</div>
+      </div>
+   </form>
+   <div id="description">
+      <details>
+         <summary>How it works?</summary>
+         <p>A key, either numeric or alphabetical, is utilized to conceal messages in a reversible manner. With a numeric key, confidential messages are encrypted by shifting each letter by a certain number of places. With an alphabetical key, encryption is achieved by replacing each letter with another letter.</p>
+      </details>
+   </div>
+</div>

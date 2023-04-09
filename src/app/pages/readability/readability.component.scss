@@ -1,0 +1,92 @@
+@import "../../app.component.scss";
+
+#readability {
+   @extend %page-setup;
+   background-color: $color-green;
+   height: 100vh;
+   min-height: 1200px;
+   padding: 45px 30px;
+   min-width: 720px;
+
+   #title {
+      @extend %title;
+   }
+
+   #note {
+      padding: 24px 12px 24px 36px;
+      background-color: $color-blank;
+      background-image: linear-gradient($color-light 0.05em, transparent 0.05em);
+      background-size: 100% 2em;
+      position: relative;
+
+      border-radius: 30px;
+      box-shadow: 0 9px 20px rgba(0, 0, 0, 0.2);
+      margin: 24px 0 36px 0;
+
+      &:after {
+         content: "";
+         position: absolute;
+         left: 10%;
+         top: 0;
+         width: 1px;
+         height: 100%;
+         background: $color-medium;
+      }
+
+      textarea {
+         background: none;
+         border: none;
+         color: $color-dark;
+         font-size: 24px;
+         font-family: $font-title;
+
+         min-height: 450px;
+         line-height: 2;
+
+         width: 300px;
+         outline: none;
+
+         padding: 36px 12px;
+
+         resize: none;
+         overflow: hidden;
+      }
+   }
+
+   #buttons {
+      button {
+         @extend %button;
+      }
+   }
+
+   #grade {
+      display: flex;
+      margin: 48px 0px 72px 0;
+
+      h2 {
+         margin: 0px 12px;
+         font-size: 24px;
+      }
+
+      span {
+         width: 150px;
+         border-bottom: 3px solid black;
+         text-align: center;
+      }
+   }
+
+   #description {
+      @extend %description;
+   }
+}
+
+@media screen and (max-width: 630px) {
+   #readability #note {
+      padding: 24px 24px 24px 36px;
+
+      textarea {
+         width: 240px;
+         padding: 36px 3px;
+      }
+   }
+}

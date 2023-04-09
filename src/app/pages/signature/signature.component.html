@@ -1,0 +1,59 @@
+<div id="signature">
+   <div id="title">
+      <p>signature generator</p>
+   </div>
+   <div id="form-wrapper">
+      <form [formGroup]="mainForm" (ngSubmit)="onSubmit()" #f="ngForm">
+         <div class="group">
+            <input formControlName="fullName" type="text" required>
+            <span></span>
+            <label for="full-name">full name</label>
+         </div>
+         <div class="group">
+            <input formControlName="jobTitle" type="text" required>
+            <span></span>
+            <label for="job-title">job title</label>
+         </div>
+         <div class="group">
+            <input formControlName="phoneNumber" type="text" required>
+            <span></span>
+            <label for="phone-number">phone number</label>
+         </div>
+         <div class="group">
+            <input formControlName="emailAddress" type="text" required>
+            <span></span>
+            <label for="email-address">email address</label>
+         </div>
+         <!-- <label>would you like to have your title</label>
+         <select formControlName="toggleTitle">
+            <option [value]="true">Yes</option>
+            <option [value]="false">No</option>
+         </select> -->
+         <!-- <input formControlName="toggleTitle" type="radio" [value]="true">Yes
+         <input formControlName="toggleTitle" type="radio" [value]="false">No -->
+         <div id="selection">
+            <div id="checkbox">
+               <input formControlName="toggleTitle" type="checkbox">
+               <label> include title in signature </label>
+            </div>
+            <div id="buttons">
+               <button type="reset">reset</button>
+               <button type="submit" [disabled]='mainForm?.invalid || f.submitted'>let's do it!</button>
+            </div>
+         </div>
+      </form>
+   </div>
+   <div id="iframe" *ngIf="f.submitted">
+      <!-- <app-overview [hasTitle]="toggleTitle?.value"></app-overview> -->
+      <div *ngIf="employee">
+         <iframe [srcdoc]="contentSanitized" frameborder="1"></iframe>
+      </div>
+      <!-- <app-overview [hasTitle]="toggleTitle?.value == 'true' ? true : false"></app-overview> -->
+   </div>
+   <div id="description">
+      <details>
+         <summary>How it works?</summary>
+         <p>To generate a signature that includes your name, contact information, and social media links, fill in the relevant fields.</p>
+      </details>
+   </div>
+</div>

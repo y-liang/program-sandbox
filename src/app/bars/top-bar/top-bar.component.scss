@@ -1,0 +1,95 @@
+@import "../../app.component.scss";
+
+$border: 3px solid $color-primary;
+
+#top-bar {
+   position: absolute;
+   top: 0;
+   // right: 0;
+   // left: 0;
+
+   z-index: 3;
+
+   padding: 36px 72px;
+
+   max-width: $page-max-width;
+   // border-bottom: 1px dashed #bdbdbd;
+
+   #grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+
+      width: 24px;
+      height: 24px;
+
+      position: relative;
+
+      .square {
+         border-top: none;
+         border-right: $border;
+         transform: rotate(-45deg);
+      }
+
+      #square-a {
+         grid-column: 1 / 2;
+         grid-row: 1 / 2;
+         border-right: none;
+      }
+      #square-b {
+         grid-column: 2 / 3;
+         grid-row: 1 / 2;
+      }
+      #square-c {
+         grid-column: 3 / 4;
+         grid-row: 1 / 2;
+      }
+      #square-d {
+         grid-column: 1 / 2;
+         grid-row: 2 / 3;
+      }
+      #square-e {
+         grid-column: 2 / 3;
+         grid-row: 2 / 3;
+         border-top: none;
+      }
+      #square-f {
+         grid-column: 3 / 4;
+         grid-row: 2 / 3;
+         border-top: none;
+      }
+      #square-g {
+         grid-column: 1 / 2;
+         grid-row: 3 / 4;
+      }
+      #square-h {
+         grid-column: 2 / 3;
+         grid-row: 3 / 4;
+         border-top: none;
+      }
+      #square-i {
+         grid-column: 3 / 4;
+         grid-row: 3 / 4;
+         border-top: none;
+      }
+      // #square-j {
+      //    grid-column: 1 / 2;
+      //    grid-row: 1/ 2;
+      // }
+
+      // &:hover .square {
+      //    border-top: none;
+      // }
+
+      &:hover {
+         cursor: pointer;
+
+         .square {
+            border-top: $border;
+         }
+      }
+   }
+}
+
+@media only screen and (max-width: 720px) {
+}

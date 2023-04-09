@@ -1,0 +1,91 @@
+<div id="choice">
+    <div id="title"> preference poll </div>
+    <form id="form-wrapper" [formGroup]="mainForm" (ngSubmit)="computeNow()">
+        <div id="form-inputs">
+            <div class="input-group">
+                <input type="text" formControlName="candidateCountCtrl" required>
+                <span></span>
+                <label>how many choices?</label>
+                <!-- <select formControlName="candidateCountCtrl">
+                    <option *ngFor="let number of candidateCountOptions" [value]="number">{{number}}</option>
+                </select> -->
+                <div class="form-error" *ngIf="candidateCountCtrl.invalid && (candidateCountCtrl.dirty || candidateCountCtrl.touched)">
+                    <div *ngIf="candidateCountCtrl.errors['pattern']"> please enter a number </div>
+                    <div *ngIf="!candidateCountCtrl.errors['pattern'] && candidateCountCtrl.errors['min']"> please enter a number greater than 1 </div>
+                    <div *ngIf="!candidateCountCtrl.errors['pattern'] && candidateCountCtrl.errors['max']"> please enter a number less than 10 </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="text" formControlName="voterCountCtrl" required>
+                <span></span>
+                <label>how many opinions?</label>
+                <!-- <select formControlName="voterCountCtrl">
+                    <option *ngFor="let number of voterCountOptions" [value]="number">{{number}}</option>
+                </select> -->
+                <div class="form-error" *ngIf="voterCountCtrl.invalid && (voterCountCtrl.dirty || voterCountCtrl.touched)">
+                    <div *ngIf="voterCountCtrl.errors['pattern']"> please enter a number </div>
+                    <div *ngIf="!voterCountCtrl.errors['pattern'] && voterCountCtrl.errors['min']"> please enter a number greater than 1 </div>
+                    <div *ngIf="!voterCountCtrl.errors['pattern'] && voterCountCtrl.errors['max']"> please enter a number less than 10 </div>
+                </div>
+            </div>
+            <div class="input-group">
+                <input type="text" formControlName="candidateNameCtrl" required>
+                <span></span>
+                <label>enter each choice here</label>
+                <div *ngIf="candidateCountCtrl.valid && voterCountCtrl.valid">
+                    <button type="button" (click)="addCandidate()" [disabled]="isCandidateFull || candidateCountCtrl.invalid || !candidateNameCtrl?.value"> add a choice </button>
+                </div>
+            </div>
+        </div>
+        <div id="drag-and-drop" cdkDropListGroup *ngIf="candidateCountCtrl.valid && voterCountCtrl.valid && preferences.length != voterCount && (candidateNames.length > 0 || voterPreferences.length > 0)">
+            <div class="column-wrapper">
+                <label>choices entered</label>
+                <!-- *ngIf="candidateNames.length > 0"  -->
+                <div cdkDropList [cdkDropListData]="candidateNames" (cdkDropListDropped)="drop($event)" class="column-list">
+                    <!-- despite tutorials assigning formControlName to FormArray items, it's not necessary at all -->
+                    <div *ngFor="let name of candidateNames; index as i" cdkDrag class="box-item">
+                        <span>{{name}}</span>
+                        <!-- <button (click)="deleteCandidate(i)">delete</button> -->
+                    </div>
+                </div>
+            </div>
+            <div class="column-wrapper">
+                <label>arrange each opinion's choice preferences</label>
+                <div cdkDropList [cdkDropListData]="voterPreferences" (cdkDropListDropped)="drop($event)" class="column-list">
+                    <div *ngFor="let name of voterPreferences; index as i" cdkDrag class="box-item">
+                        {{name}}
+                    </div>
+                </div>
+            </div>
+            <button type="button" (click)="addPreference()" [disabled]="isPreferenceFull || voterPreferences.length != candidateCount">add preference</button>
+        </div>
+        <div id="record" *ngIf="preferences.length > 0">
+            <div *ngFor="let list of preferences; index as i"> opinion {{i + 1}}'s choices: {{list.join(' ')}}
+            </div>
+        </div>
+        <div id="form-buttons">
+            <button type="reset" (click)="clearFields()">reset</button>
+            <button type="submit" [disabled]="!isReady" (click)="formSubmitted()">submit</button>
+        </div>
+        <div id="result" *ngIf="isSubmitted">
+            <p>result: {{result}}</p>
+        </div>
+        <!-- <div formArrayName="preferenceCtrls">
+            <button (click)="addPreference()">add preference</button>
+            <div *ngFor="let control of preferenceCtrls.controls; index as i">
+                <div *ngIf="i != preferenceCtrls.length">
+                    <div>i = {{i}}</div>
+                    <div>length = {{preferenceCtrls.length}} </div>
+                    <span>voter's number {{i + 1}} choice</span>
+                    <input [formControlName]="i">
+                </div>
+            </div>
+        </div> -->
+    </form>
+    <div id="description">
+        <details>
+            <summary>How it works?</summary>
+            <p>To calculate poll results that represent the ranked preferences of a group, provide the choice and arrange them in order of preference. </p>
+        </details>
+    </div>
+</div>

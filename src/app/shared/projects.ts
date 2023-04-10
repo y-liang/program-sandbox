@@ -7,6 +7,16 @@ export interface Project {
 export const PROJECTS: Project[] = [
    {
       "id": "a",
+      "name": "percolation-simulate",
+      "description": "Increases the probability of permeable spaces (empty squares) in a checkerboard of blocked particles (x squares) for percolation"
+   },
+   {
+      "id": "b",
+      "name": "noughts-crosses",
+      "description": "Players who take turns marking the spaces in a three-by-three grid with x or o"
+   },
+   {
+      "id": "c",
       "name": "reading-level",
       "description": "Determine the approximate reading level required to understand a given text"
    },

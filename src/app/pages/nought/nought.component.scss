@@ -1,0 +1,30 @@
+@import "../../app.component.scss";
+
+#nought {
+  @extend %page-setup;
+  background-color: $color-green;
+  height: 100vh;
+  min-height: 1200px;
+  padding: 90px 30px;
+  min-width: 720px;
+
+  #title {
+    @extend %title;
+  }
+
+  #image-wrapper {
+    background-color: $color-yellow;
+    border: 3px solid $color-dark;
+    padding: 60px 36px 36px 36px;
+
+    img {
+      width: 100%
+    }
+
+  }
+
+
+  #description {
+    @extend %description;
+  }
+}

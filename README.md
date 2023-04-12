@@ -9,9 +9,9 @@ A learning space where a series of programming exercises progress from a command
 ## Features
 This application was developed using Angular and leverages its components, modules, and services to present a series of coding challenges.
 
-- Routing module and Service Provider
+- Configure routing module and service provider
 
-For maintainability of the routing configuration, the app router is loaded and set in a separate, top-level module in Angular. A shared project service is implemented to provide project information to all components within the application.
+The app router is loaded and set in a separate, top-level module in Angular. A shared project service is implemented to provide project information to all components within the application.
 
 ```
 @NgModule({

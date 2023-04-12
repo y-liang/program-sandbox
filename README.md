@@ -126,6 +126,13 @@ toggleMode() {
    let indexGrade = 0.0588 * avgLetters - 0.296 * avgSentences - 15.8;
    ```
 
+- Signature Generator
+
+   A tool to create an email signature that includes name, contact information, and social media links.
+
+   ![signature generator](/src/assets/signature.png)
+
+
 - Substitution Cipher
 
    A key, either numeric or alphabetical, is utilized to encrypt messages in a reversible manner.
@@ -162,16 +169,6 @@ toggleMode() {
       }
    );
    ```
-
-
-
-
-- Signature Generator
-
-A tool to create an email signature that includes name, contact information, and social media links.
-
-![signature generator](/src/assets/signature.png)
-
 
 
 ## Summary

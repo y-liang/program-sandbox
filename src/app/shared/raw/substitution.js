@@ -79,17 +79,14 @@ function translateText(key, type, text) {
    key, type, text;
 
    let textArray = text.split('');
-   let afterTextArray = [];
+   let resultArray = [];
 
    if (type == 'encrypt') {
-      console.log('???textArray??? ' + textArray);
-
-      afterTextArray = textArray.map(
+      resultArray = textArray.map(
          item => {
             if (item >= 'a' && item <= 'z') {
                return item = key[ALPHABET.indexOf(item)];
             } else if (item >= 'A' && item <= 'Z') {
-               console.log('???' + key);
                return item = key[ALPHABET.indexOf(item.toLowerCase())].toUpperCase(); // .toUpperCase() Cannot read property 'toUpperCase' of undefined - because no return
             } else {
                return item;
@@ -97,10 +94,9 @@ function translateText(key, type, text) {
          }
       );
 
-      console.log('??? ' + afterTextArray);
    } else {
       // decipher
-      afterTextArray = textArray.map(
+      resultArray = textArray.map(
          item => {
             if (item >= 'a' && item <= 'z') {
                return item = ALPHABET[key.indexOf(item)];
@@ -113,10 +109,9 @@ function translateText(key, type, text) {
       );
    }
 
-   afterText = afterTextArray.join('');
+   resultText = resultArray.join('');
 
    console.log('now encrypted: ' + afterText);
-
 }
 
 inputReady(translateText);

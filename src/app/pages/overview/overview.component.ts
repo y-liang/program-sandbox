@@ -22,8 +22,8 @@ export class OverviewComponent implements OnInit {
       .subscribe(projects => this.projects = projects);
 
 
-    console.log('this.currentMode');
-    console.log(this.currentMode);
+    // console.log('this.currentMode');
+    // console.log(this.currentMode);
 
     this.currentMode = localStorage.getItem('mode') ? localStorage.getItem('mode') : null;
     this.mode = this.currentMode ? this.currentMode : this.modes[1];

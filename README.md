@@ -3,6 +3,7 @@ A learning space where a series of programming exercises progress from a command
 
 ## Demo
 - https://ungram.dev.yliang.net
+
 ![demo](/src/assets/demo.png)
 
 ## Features
@@ -74,54 +75,65 @@ toggleMode() {
 
 - Percolation Simulate
 
-A script that uses the quick union algorithm to simulate percolation of a grid system by randomly opening up a block until the top connects to the bottom.
-> Below is the implementation of quick union with `root()` and `union()` functions
+   A script that uses the quick union algorithm to simulate percolation of a grid system by randomly opening up a block until the top connects to the bottom.
 
-```
-root(label) {
-   while (label != this._relation[label]) {
-      label = this._relation[label];
+   > Here is the code: [percolation.js](/src/app/shared/raw/percolation.js).
+
+   ![percolation simulate](/src/assets/percolation.gif)
+
+
+   > Below is the implementation of quick union with `root()` and `union()` functions
+
+   ```
+   root(label) {
+      while (label != this._relation[label]) {
+         label = this._relation[label];
+      }
+      return label;
    }
-   return label;
-}
 
-union(labelA, labelB) {
-   let rootA = this.root(labelA);
-   let rootB = this.root(labelB);
+   union(labelA, labelB) {
+      let rootA = this.root(labelA);
+      let rootB = this.root(labelB);
 
-   if (rootA == 'up' && rootB == 'dn') {
-      this.connected = true;
-   } else if (rootB == 'up' && rootA == 'dn') {
-      this.connected = true;
-   } else if (rootA == 'up' || rootA == 'dn') {
-      this._relation[labelB] = rootA;
-   } else if (rootB == 'up' || rootB == 'dn') {
-      this._relation[labelA] = rootB;
-   } else {
-      this._relation[labelA] = this.root(labelB);
+      if (rootA == 'up' && rootB == 'dn') {
+         this.connected = true;
+      } else if (rootB == 'up' && rootA == 'dn') {
+         this.connected = true;
+      } else if (rootA == 'up' || rootA == 'dn') {
+         this._relation[labelB] = rootA;
+      } else if (rootB == 'up' || rootB == 'dn') {
+         this._relation[labelA] = rootB;
+      } else {
+         this._relation[labelA] = this.root(labelB);
+      }
    }
-}
-```
-
-> Here is the code: [percolation.js](/src/app/shared/raw/percolation.js).
-
-![percolation simulate](/src/assets/percolation.gif)
+   ```
 
 - Reading Level
 
-Analyze reading material and determine the approximate grade level required for comprehension using the Coleman-Liau index.
-```
-let avgLetters = (numLetters(text) * 100) / numWords(text);
-let avgSentences = (numSentences(text) * 100) / numWords(text);
-let indexGrade = 0.0588 * avgLetters - 0.296 * avgSentences - 15.8;
-```
-> Here is the code: [readability.js](/src/app/shared/raw/readability.js).
+   Analyze reading material and determine the approximate grade level required for comprehension using the Coleman-Liau index.
 
-![reading level](/src/assets/readability.gif)
+   > Here is the code: [readability.js](/src/app/shared/raw/readability.js).
+
+   ![reading level](/src/assets/readability.gif)
+
+   > Below is the Coleman-Liau index implementation with _CLI=0.0588L-0.296S-15.8_ formula
+
+   ```
+   let avgLetters = (numLetters(text) * 100) / numWords(text);
+   let avgSentences = (numSentences(text) * 100) / numWords(text);
+   let indexGrade = 0.0588 * avgLetters - 0.296 * avgSentences - 15.8;
+   ```
 
 - Substitution Cipher
 
-    A key, either numeric or alphabetical, is utilized to encrypt messages in a reversible manner.
+   A key, either numeric or alphabetical, is utilized to encrypt messages in a reversible manner.
+
+   > Here is the code: [substitution.js](/src/app/shared/raw/substitution.js).
+
+   ![substitution cipher](/src/assets/substitution.gif)
+
    - Encrypt
    ```
    resultArray = textArray.map(
@@ -150,14 +162,17 @@ let indexGrade = 0.0588 * avgLetters - 0.296 * avgSentences - 15.8;
       }
    );
    ```
-> Here is the code: [substitution.js](/src/app/shared/raw/substitution.js).
 
-![substitution cipher](/src/assets/substitution.gif)
+
+
 
 - Signature Generator
 
 A tool to create an email signature that includes name, contact information, and social media links.
+
 ![signature generator](/src/assets/signature.png)
+
+
 
 ## Summary
 This page serves as a record of the lessons learned and skills developed while working on these projects. It is hoped that this collection will continue to grow as the journey in programming continues.
